@@ -1,0 +1,2 @@
+# The requirements to run the API.
+fastapi == 0.78.0
