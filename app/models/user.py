@@ -9,7 +9,7 @@ class UserStatsData(BaseModel):
     pp: float
     play_count: int
     play_time: int
-    accouracy: float = Field(..., le= 100)
+    accuracy: float = Field(..., le= 100)
     max_combo: int
     rank: int
 
