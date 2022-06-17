@@ -1,6 +1,8 @@
 from typing import Optional
 from pydantic import BaseModel, Field
 
+from .clan import ClanData
+
 class UserStatsData(BaseModel):
     """A model for user stats for a specific mode."""
 
@@ -20,13 +22,6 @@ class ModeStatsData(BaseModel):
     rx: list[UserStatsData]
     ap: list[UserStatsData]
 
-class SmallClanData(BaseModel):
-    """Model for basic clan data."""
-
-    id: int
-    tag: str
-    name: str
-
 class PlayerBadgeData(BaseModel):
     """Represents a singular badge."""
 
@@ -41,7 +36,7 @@ class PlayerCardData(BaseModel):
     name: str
     privileges: int
     stats: ModeStatsData
-    clan: Optional[SmallClanData]
+    clan: Optional[ClanData]
     badges: list[PlayerBadgeData]
     background_url: str
 
