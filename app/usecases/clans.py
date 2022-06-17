@@ -19,8 +19,5 @@ def get_data_from_row(row: dict[str, Any]) -> ClanData:
     """Creates a ClanData object from a row from the MySQL Database."""
 
     return ClanData(
-        id=row["id"],
-        tag=row["tag"],
-        name=row["name"],
-        icon_url=row["icon_url"],
+        **row
     )
