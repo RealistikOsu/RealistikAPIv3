@@ -44,6 +44,5 @@ async def rank_graph_get(
     history.append(cur_rank)
     
     return JSONResponse({
-        "status": 200,
         "graph": history,
     })
