@@ -1,6 +1,6 @@
 # The requirements to run the API.
 fastapi == 0.78.0
-aiomysql == 0.1.1
+asyncmy == 0.2.5
 uvloop == 0.16.0
 uvicorn == 0.17.6
 redis == 4.3.3

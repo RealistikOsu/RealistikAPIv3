@@ -1,5 +1,6 @@
 from typing import Any, Iterable, Optional
-import aiomysql
+from asyncmy.cursors import DictCursor
+import asyncmy
 
 class Connection:
     """A thin wrapper around an aiomysql connection offering a nicer API (imo)."""
@@ -8,7 +9,7 @@ class Connection:
         "_conn",
     )
 
-    def __init__(self, conn: aiomysql.Connection) -> None:
+    def __init__(self, conn: asyncmy.Connection) -> None:
         """Creates an instance of `Connection` from an aiomysql connection."""
 
         self._conn = conn
@@ -23,14 +24,14 @@ class Connection:
     async def fetchall(self, query: str, args: Iterable[Any] = ()) -> tuple[dict[str, Any]]:
         """Executes `query` on a new cursor, returning all results."""
 
-        async with self._conn.cursor(aiomysql.DictCursor) as cur:
+        async with self._conn.cursor(DictCursor) as cur:
             await cur.execute(query, args)
             return await cur.fetchall()
     
     async def fetchone(self, query: str, args: Iterable[Any] = ()) -> Optional[dict[str, Any]]:
         """Executes `query` on a new cursor, returning the first result."""
 
-        async with self._conn.cursor(aiomysql.DictCursor) as cur:
+        async with self._conn.cursor(DictCursor) as cur:
             await cur.execute(query, args)
             return await cur.fetchone()
     

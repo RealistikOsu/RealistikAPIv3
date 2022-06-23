@@ -3,15 +3,15 @@ from app.db.sql import Connection
 
 from typing import AsyncIterator
 from redis import asyncio as aioredis
-import aiomysql
+import asyncmy
 
-sql_pool: aiomysql.Pool
+sql_pool: asyncmy.Pool
 redis_pool: aioredis.Redis
 
 async def create_sql_pool() -> None:
     global sql_pool
     
-    sql_pool = await aiomysql.create_pool(
+    sql_pool = await asyncmy.create_pool(
         user= config.sql_user,
         password= config.sql_password,
         db= config.sql_db,
