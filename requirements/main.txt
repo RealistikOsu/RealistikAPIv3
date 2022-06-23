@@ -3,3 +3,5 @@ fastapi == 0.78.0
 aiomysql == 0.1.1
 uvloop == 0.16.0
 uvicorn == 0.17.6
+redis == 4.3.3
+pydantic[dotenv]

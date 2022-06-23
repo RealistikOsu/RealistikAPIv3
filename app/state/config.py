@@ -6,6 +6,10 @@ from pydantic import (
 
 class Config(BaseSettings):
     """The RealistikAPI v3 env var config."""
+    
+    class Config:
+        env_file = ".env"
+        env_file_encoding = "utf-8"
 
     sql_user: str = Field(..., env= "ROSU_SQL_USER")
     sql_password: str = Field(..., env= "ROSU_SQL_PASSWORD")

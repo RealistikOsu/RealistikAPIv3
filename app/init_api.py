@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from state.config import config
-
-from state.connections import create_sql_pool
+from app.state.config import config
+from app.state.connections import create_sql_pool
+from app.state.connections import create_redis_pool
 
 def init_routers(app: FastAPI) -> None:
     ...
@@ -10,6 +10,7 @@ def init_events(app: FastAPI) -> None:
     @app.on_event("startup")
     async def on_startup() -> None:
         await create_sql_pool()
+        await create_redis_pool()
 
 def init_app() -> FastAPI:
     app = FastAPI(

@@ -1,3 +1,5 @@
+from app.state.config import config
+
 import uvicorn
 import uvloop
 
@@ -8,6 +10,7 @@ def main() -> int:
         "app.init_api:fastapi_app",
         server_header= False,
         date_header= False,
+        port= config.server_port,
     )
     
     return 0
