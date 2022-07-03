@@ -8,6 +8,7 @@ from app import api
 
 def init_routers(app: FastAPI) -> None:
     app.include_router(api.stats.router)
+    app.include_router(api.beatmap.router)
 
 def init_events(app: FastAPI) -> None:
     @app.on_event("startup")
